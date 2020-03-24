@@ -1,0 +1,28 @@
+{
+  "name": "myexpress",
+  "version": "1.0.0",
+  "description": "Express barebone template npm init -y",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuanyewa/express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuanyewa/express/issues"
+  },
+  "homepage": "https://github.com/yuanyewa/express#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "nodemon": "^2.0.2",
+    "uuid": "^7.0.2"
+  }
+}
