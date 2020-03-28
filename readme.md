@@ -80,3 +80,44 @@ Delete id:
 Express-handlebars:
 https://github.com/ericf/express-handlebars
 npm i express-handlebars
+// views/main.handlebars, views/layouts/home.handlebars
+app.engine('handlebars', exphdb({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+app.get('/', (req, res) => res.render('home', { someone: 'xiaohong', members }));
+main.handlebars:
+<html lang="en">
+<head>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Members App</title>
+</head>
+<body>
+  <div class="container mt-4">
+    {{{body}}}
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+</body>
+</html>
+home.handlebars:
+<form action="/api/members" method="POST" class="mb-4">
+<div class="form-group">
+  <label for="name">Name</label>
+  <input type="text" name="name" class="form-control">
+</div>
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="email" name="email" class="form-control">
+</div>
+<input type="submit" value="Add Member" class="btn btn-primary">
+</form>
+
+<h1>Members is {{someone}}</h1>
+{{#each members}}
+<li class="list-group-item">{{name}}</li>
+{{/each}}
+
+<a href="/api/members" class="btn btn-light">Visit API</a>
+
+Redirect from res.json to redirect:
+  // res.json(members);
+  res.redirect('/');
+
