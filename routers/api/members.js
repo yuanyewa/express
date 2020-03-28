@@ -24,7 +24,8 @@ router.post('/', (req, res) => {
     return res.status(400).json({msg: "no name or email"});
   }
   members.push(newMember);
-  res.json(members);
+  res.redirect('/');
+  // res.json(members);
 });
 router.put('/:id', (req, res) => {
   const found = members.some(m => m.id === parseInt(req.params.id));

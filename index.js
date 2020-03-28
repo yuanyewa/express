@@ -1,11 +1,21 @@
 const express = require('express');
 const path = require('path');
+const exphdb = require('express-handlebars');
 const app = express();
+const members = require('./models/Members');
+
+app.engine('handlebars', exphdb({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use(require('./middleware/logger'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+app.get('/', (req, res) => res.render('home', {
+    someone: 'xiaohong',
+    members
+  })
+);
 app.use('/api/members', require('./routers/api/members'));
 
 app.get('/', (req, res) => res.send('Hello express!!!'));
